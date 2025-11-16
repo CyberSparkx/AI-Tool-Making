@@ -17,7 +17,7 @@ const model = new ChatGoogleGenerativeAI({
 app.get("/chat", async (req, res) => {
   try {
     const result = await model.invoke([
-      new HumanMessage("What is langchain in simple words?"),
+      new HumanMessage("What is the weather today ?"),
     ]);
 
     res.json({ message: result.content });
