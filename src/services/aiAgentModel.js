@@ -1,7 +1,9 @@
-// For creation of this AI agent I am going to use Simple Langchain not lang Graph
+// For creation of this AI agent I am going to use Simple Langchain not LangGraph
 
 import { createAgent } from "langchain";
 import { ChatGoogleGenerativeAI } from "@langchain/google-genai";
+import dotenv from "dotenv";
+dotenv.config();
 import { weatherTool } from "../tools/webSearchTool.js";
 
 const model = new ChatGoogleGenerativeAI({
@@ -11,7 +13,7 @@ const model = new ChatGoogleGenerativeAI({
   apiKey: process.env.GOOGLE_API_KEY,
 });
 
-const agent = createAgent({
+const agent = await createAgent({
   model,
   tools: [weatherTool],
 });

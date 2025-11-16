@@ -2,7 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 dotenv.config({ path: ".env" });
 import { HumanMessage } from "@langchain/core/messages";
-// import agent from "./src/services/aiAgentModel.js";
+import agent from "./src/services/aiAgentModel.js";
 import model from "./src/services/chatModel.js";
 
 
@@ -26,7 +26,7 @@ app.get("/chat", async (req, res) => {
 // app.post("/weather", async (req, res) => {
 //   try {
 //     const userMessage = req.body.message;
-//     const result = await agent.invoke("What is the weather in Delhi?");
+//     const result = await agent.invoke(userMessage);
 //     res.json({ message: result.content });
 //   } catch (err) {
 //     console.error("Error:", err);
