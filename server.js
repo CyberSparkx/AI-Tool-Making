@@ -23,15 +23,22 @@ app.get("/chat", async (req, res) => {
   }
 });
 
-// app.post("/weather", async (req, res) => {
-//   try {
-//     const userMessage = req.body.message;
-//     const result = await agent.invoke(userMessage);
-//     res.json({ message: result.content });
-//   } catch (err) {
-//     console.error("Error:", err);
-//     res.status(500).json({ error: err.message });
-//   }
-// });
+app.post("/weather", async (req, res) => {
+  try {
+    const userMessage = req.body.message;
+
+    const result = await agent.invoke({
+      messages: [{ role: "user", content: userMessage }],
+    });
+
+    const last = result.messages[result.messages.length - 1];
+
+    res.json({ message: last.content });
+  } catch (err) {
+    console.error("Error:", err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
 
 app.listen(3000, () => console.log("Server running at http://localhost:3000"));

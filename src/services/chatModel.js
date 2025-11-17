@@ -10,6 +10,4 @@ const model = new ChatGoogleGenerativeAI({
 });
 
 
-console.log(process.env.GOOGLE_API_KEY);
-
 export default model;
